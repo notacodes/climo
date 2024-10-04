@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Climo</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.jpg">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="grid-container">
+        <header>
+            <img src="/images/Climo-Logo.png" alt="Logo">
+            <div class="searchbar">
+                <button><img src="images/search.svg"/></button>
+                <input type="search" placeholder="Search City" spellcheck="false"></Input>
+            </div>
+            <button class="searchLocation"><img src="/images/my_location.svg" alt="Icon"><p>Current Location</p></button>
+        </header>
+        <section>
+            <div class="weather-card">
+                <div class="weather-card-grid">
+                    <p class="time">Now</p>
+                    <div class="date-container-weather">
+                        <h2 class="temperature">25°C</h2>
+                        <img src="images/type=03d.svg" alt="Icon">
+                    </div>
+                    <p class="weather-description">Clouds</p>
+                    <hr>
+                    <div class="date-container">
+                        <img src="/images/todaydate.svg" alt="Icon">
+                        <p class="date">04.10.2024</p>
+                    </div>
+                    <div class="date-container">
+                    <img src="/images/location_on(1).svg" alt="Icon">
+                    <p class="location"> London</p>
+                </div>
+            </div>
+        </section>
+        <main>
+            <div class="detailed-information">
+                <h2>Todays Highlights</h2>
+                <div class="detailed-information-cards"></div>
+                <div class="air-quality">
+                    <div class="air-quality-content">
+                        <div class="air-quality-header">                   
+                            <h4>Air Quality Index</h4>
+                            <img src="images/air-quality-index=1.svg" alt="Icon">
+                        </div>
+                        <div class="air-quality-metrics">
+                            <p id="first-metric-air-quality">PM2.5</p>
+                            <p>SO2</p>
+                            <p>NO2</p>
+                            <p>O3</p>
+                        </div>
+                        <div class="air-quality-values">
+                        <img src="images/air.svg" alt="Icon">
+                            <p>12.5</p>
+                            <p>0.5</p>
+                            <p>0.5</p>
+                            <p>0.5</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="sunrise-sunset">
+                    <div class="sunrise-sunset-content">
+                        <div class="sunrise-sunset-header">                   
+                            <h4>Sunrise & Sunset</h4>
+                        </div>
+                        <div class="sunrise-sunset-metrics">
+                            <p>Sunrise</p>
+                            <p>Sunset</p>
+                        </div>
+                        <div class="air-quality-values">
+                        <img src="images/clear_day.svg" alt="Icon">
+                            <p id="first-metric-sunrise-sunset">6:30AM</p>
+                            <img src="images/clear_night.svg" alt="Icon">
+                            <p>5:54PM</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="humidity">
+
+                </div>
+                <div class="pressure">
+
+                </div>
+                <div class="visibility">
+
+                </div>
+                <div class="feels-like">
+
+                </div>
+            </div>
+        </main>
+        <footer><p>Made with ♥ by Nota</p></footer>
+
+    </div>
+</body>
+</html>

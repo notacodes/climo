@@ -13,7 +13,7 @@
             <img src="/images/Climo-Logo.png" alt="Logo">
             <div class="searchbar">
                 <button><img src="images/search.svg"/></button>
-                <input type="search" placeholder="Search City" spellcheck="false"></Input>
+                <input class="search" placeholder="Search City" spellcheck="false"></Input>
             </div>
             <button class="searchLocation"><img src="/images/my_location.svg" alt="Icon"><p>Current Location</p></button>
         </header>
@@ -86,7 +86,7 @@
                             </div>
                             <div class="humidity-values">
                             <img src="images/humidity_percentage.svg" alt="Icon">
-                            <p class="p-value">35<span class="units">%</span></p>
+                            <p class="p-value" id="humidity">35<span class="units">%</span></p>
                             </div>
                         </div>
                 </div>
@@ -97,7 +97,7 @@
                         </div>
                         <div class="pressure-values">
                         <img src="images/airwave.svg" alt="Icon">
-                        <p class="p-value">1013<span class="units">hPa</span></p>
+                        <p class="p-value" id="pressure">1013<span class="units">hPa</span></p>
                         </div>
                     </div>
                 </div>
@@ -108,7 +108,7 @@
                         </div>
                         <div class="visibility-values">
                         <img src="images/visibility.svg" alt="Icon">
-                        <p class="p-value">10<span class="units">km</span></p>
+                        <p class="p-value" id="visibility">10<span class="units">km</span></p>
                         </div>
                     </div>
                 </div>
@@ -119,7 +119,7 @@
                         </div>
                         <div class="feels-like-values">
                         <img src="images/thermostat.svg" alt="Icon">
-                        <p class="p-value">10<span class="units">km</span></p>
+                        <p class="p-value" id="feels-like">10<span class="units">°C</span></p>
                         </div>
                     </div>
                 </div>
@@ -127,7 +127,7 @@
             </div>
         </main>
         <footer><p>Made with ♥ by Nota</p></footer>
-
     </div>
+    <script src="script.js"></script>
 </body>
 </html>

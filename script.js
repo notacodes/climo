@@ -1,7 +1,8 @@
 const apiKey = "8bd4fbc98ef565a9eb2b93540b25bf9e";
 const apiUrl =
   "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
-
+const airQualityApiUrl = "http://api.openweathermap.org/data/2.5/air_pollution";
+  
 const searchBox = document.querySelector(".search");
 const searchBtn = document.querySelector(".searchbar button");
 const weatherIcon = document.querySelector(".date-container-weather img");
@@ -17,22 +18,45 @@ async function checkWeather(city) {
     var data = await response.json();
     console.log(data);
 
-    document.querySelector(".location").innerHTML = data.name;
-    document.querySelector(".temperature").innerHTML =
-      Math.round(data.main.temp) + "°C";
-    document.querySelector("#humidity").p = data.main.humidity;
-    document.querySelector("#feels-like").p = data.main.feels_like + "°C";
+    document.querySelector(".search").placeholder = data.name;
+    const weatherDescription = data.weather[0].description;
+    document.querySelector(".weather-description").innerHTML = weatherDescription.charAt(0).toUpperCase() + weatherDescription.slice(1);
+    document.querySelector(".location").innerHTML = data.name + ", " + data.sys.country;
+    
+    const today = new Date();
+    const day = String(today.getDate()).padStart(2, '0');
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const year = today.getFullYear();
+    const formattedDate = `${day}.${month}.${year}`;
+    document.querySelector(".date").innerHTML = formattedDate;
 
-    if (data.weather[0].main == "Clouds") {
-      weatherIcon.src = "images/clouds.png";
-    } else if (data.weather[0].main == "Clear") {
-      weatherIcon.src = "images/clear.png";
-    } else if (data.weather[0].main == "Rain") {
-      weatherIcon.src = "images/rain.png";
-    } else if (data.weather[0].main == "Drizzle") {
-      weatherIcon.src = "images/drizzle.png";
-    } else if (data.weather[0].main == "Mist") {
-      weatherIcon.src = "images/mist.png";
+document.querySelector(".temperature").innerHTML =
+Math.round(data.main.temp) + "°C";
+document.querySelector("#sunset").innerHTML = convertUnixToAMPM(data.sys.sunset);
+document.querySelector("#first-metric-sunrise-sunset").innerHTML = convertUnixToAMPM(data.sys.sunrise);
+document.querySelector("#visibility").innerHTML = (data.main.pressure /1000).toFixed(2) + "km";
+document.querySelector("#pressure").innerHTML = data.main.pressure + "hPa";
+document.querySelector("#humidity").innerHTML = data.main.humidity + "%";
+document.querySelector("#feels-like").innerHTML = Math.round(data.main.feels_like) + "°C";
+
+    if (data.weather[0].icon == "01d") {
+      weatherIcon.src = "images/type=01d.svg";
+    } else if (data.weather[0].icon == "02d") {
+      weatherIcon.src = "images/type=02d.png";
+    } else if (data.weather[0].icon == "03d") {
+      weatherIcon.src = "images/type=03d.svg";
+    } else if (data.weather[0].icon == "04d") {
+      weatherIcon.src = "images/type=04d.svg";
+    } else if (data.weather[0].icon == "09d") {
+      weatherIcon.src = "images/type=09d.svg";
+    }else if (data.weather[0].icon == "10d") {
+      weatherIcon.src = "images/type=10d.svg";
+    }else if (data.weather[0].icon == "11d") {
+      weatherIcon.src = "images/type=11d.svg";
+    }else if (data.weather[0].icon == "13d") {
+      weatherIcon.src = "images/type=13d.svg";
+    }else if (data.weather[0].icon == "50d") {
+      weatherIcon.src = "images/type=50d.svg";
     }
   }
 };
@@ -60,7 +84,9 @@ async function checkWeatherByCoords(lat, lon) {
 
     document.querySelector(".temperature").innerHTML =
       Math.round(data.main.temp) + "°C";
-    document.querySelector("#visibility").innerHTML = (data.main.pressure /1000).toFixed(2) + "km";
+      document.querySelector("#sunset").innerHTML = convertUnixToAMPM(data.sys.sunset);
+document.querySelector("#first-metric-sunrise-sunset").innerHTML = convertUnixToAMPM(data.sys.sunrise);
+    document.querySelector("#visibility").innerHTML = (data.main.pressure /1000).toFixed(1) + "km";
     document.querySelector("#pressure").innerHTML = data.main.pressure + "hPa";
     document.querySelector("#humidity").innerHTML = data.main.humidity + "%";
     document.querySelector("#feels-like").innerHTML = Math.round(data.main.feels_like) + "°C";
@@ -68,7 +94,7 @@ async function checkWeatherByCoords(lat, lon) {
         if (data.weather[0].icon == "01d") {
           weatherIcon.src = "images/type=01d.svg";
         } else if (data.weather[0].icon == "02d") {
-          weatherIcon.src = "images/type=02d.svg";
+          weatherIcon.src = "images/type=02d.png";
         } else if (data.weather[0].icon == "03d") {
           weatherIcon.src = "images/type=03d.svg";
         } else if (data.weather[0].icon == "04d") {
@@ -90,8 +116,12 @@ async function checkWeatherByCoords(lat, lon) {
 
 
 
-searchBtn.addEventListener("click", () => {
-  checkWeather(searchBox.value);
+searchBtn.addEventListener("click", async() => {
+  const city = searchBox.value; 
+  await checkWeather(city);
+  const lat = await checkCordslat(city); 
+  const lon = await checkCordslon(city);
+  await checkAirQuality(lat, lon);
 });
 
 searchLocation.addEventListener("click", () => {
@@ -100,7 +130,6 @@ searchLocation.addEventListener("click", () => {
         (position) => {
           const lat = position.coords.latitude;
           const lon = position.coords.longitude;
-          console.log("Latitude is :", lat, "Longitude is :", lon);
           checkWeatherByCoords(lat, lon);
         },
         (error) => {
@@ -112,3 +141,91 @@ searchLocation.addEventListener("click", () => {
       alert("Geolocation is not supported by this browser.");
     }
   });
+
+  function convertUnixToAMPM(unixTime) {
+    const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    const date = new Date(unixTime * 1000);
+    const options = {
+      hour: 'numeric',
+      minute: 'numeric',
+      hour12: true,
+      timeZone: userTimezone,
+    };
+    let timeString = date.toLocaleString('en-US', options);
+    
+    timeString = timeString.replace(' ', '');
+    
+    return timeString;
+  }
+
+
+  async function checkCordslat(city){
+    const response = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${apiKey}`);
+  
+    if (response.status == 404) {
+        console.error("Stadt nicht gefunden");
+     
+    } else {
+        var data = await response.json();
+        if (!data.length) {
+            console.error("Keine Koordinaten gefunden");
+        } else {
+            var lat = data[0].lat;
+            console.log(data);
+            console.log(lat);
+            return lat;
+        }
+    }
+  }
+  
+  async function checkCordslon(city){
+    const response = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${apiKey}`);
+  
+    if (response.status == 404) {
+        console.error("Stadt nicht gefunden");
+
+    } else {
+        var data = await response.json();
+        if (!data.length) {
+            console.error("Keine Koordinaten gefunden");
+        } else {
+            var lon = data[0].lon;
+            console.log(lon);
+            return lon;
+        }
+    }
+  }
+  
+  async function checkAirQuality(lat, lon){
+        const response = await fetch(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${apiKey}`);
+            if (response.status == 404) {
+                console.error("Luftqualität nicht gefunden");
+            } else {
+                console.error("Ein Fehler ist aufgetreten: " + response.status);
+            
+  
+
+        const data = await response.json();
+        console.log(data);
+
+        document.querySelector("#pm2_5").innerHTML = data.list[0].components.pm2_5.toFixed(1);
+        document.querySelector("#so2").innerHTML = data.list[0].components.so2.toFixed(1);
+        document.querySelector("#no2").innerHTML = data.list[0].components.no2.toFixed(1);
+        document.querySelector("#o3").innerHTML = data.list[0].components.o3.toFixed(1);
+
+        const aqi = data.list[0].main.aqi;
+        const airQualityImage = document.querySelector("#air-quality-image");
+
+        if (aqi == 1) {
+            airQualityImage.src = "images/air-quality-index=1.svg";
+        } else if (aqi == 2) {
+            airQualityImage.src = "images/air-quality-index=2.svg";
+        } else if (aqi == 3) {
+            airQualityImage.src = "images/air-quality-index=3.svg";
+        } else if (aqi == 4) {
+            airQualityImage.src = "images/air-quality-index=4.svg";
+        } else if (aqi == 5) {
+            airQualityImage.src = "images/air-quality-index=5.svg";
+        }
+        
+    }}

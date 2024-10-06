@@ -45,7 +45,7 @@
                     <div class="air-quality-content">
                         <div class="air-quality-header">                   
                             <h4>Air Quality Index</h4>
-                            <img src="images/air-quality-index=1.svg" alt="Icon">
+                            <img id="air-quality-image" src="images/air-quality-index=1.svg" alt="Icon">
                         </div>
                         <div class="air-quality-metrics">
                             <p id="first-metric-air-quality">PM2.5</p>
@@ -55,10 +55,10 @@
                         </div>
                         <div class="air-quality-values">
                         <img src="images/air.svg" alt="Icon">
-                            <p class="p-value">12.5</p>
-                            <p class="p-value">0.5</p>
-                            <p class="p-value">0.5</p>
-                            <p class="p-value">75.5</p>
+                            <p class="p-value" id="pm2_5">12.5</p>
+                            <p class="p-value" id="so2">0.5</p>
+                            <p class="p-value" id="no2">0.5</p>
+                            <p class="p-value" id="o3">75.5</p>
                         </div>
                     </div>
                 </div>
@@ -73,9 +73,9 @@
                         </div>
                         <div class="sunrise-sunset-values">
                         <img src="images/clear_day.svg" alt="Icon">
-                            <p id="first-metric-sunrise-sunset" class="p-value">6:30AM</p>
+                            <p id="first-metric-sunrise-sunset"class="p-value">6:30AM</p>
                             <img src="images/clear_night.svg" alt="Icon">
-                            <p class="p-value">5:54PM</p>
+                            <p id="sunset"class="p-value">5:54PM</p>
                         </div>
                     </div>
                 </div>

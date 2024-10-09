@@ -34,10 +34,10 @@ document.querySelector(".temperature").innerHTML =
 Math.round(data.main.temp) + "°C";
 document.querySelector("#sunset").innerHTML = convertUnixToAMPM(data.sys.sunset);
 document.querySelector("#first-metric-sunrise-sunset").innerHTML = convertUnixToAMPM(data.sys.sunrise);
-document.querySelector("#visibility").innerHTML = (data.main.pressure /1000).toFixed(2) + "km";
-document.querySelector("#pressure").innerHTML = data.main.pressure + "hPa";
-document.querySelector("#humidity").innerHTML = data.main.humidity + "%";
-document.querySelector("#feels-like").innerHTML = Math.round(data.main.feels_like) + "°C";
+document.querySelector("#visibility").innerHTML = (data.main.pressure /1000).toFixed(2) + '<span class="units">km</span>';
+document.querySelector("#pressure").innerHTML = data.main.pressure + '<span class="units">hPa</span>';
+document.querySelector("#humidity").innerHTML = data.main.humidity + '<span class="units">%</span>';
+document.querySelector("#feels-like").innerHTML = Math.round(data.main.feels_like) + '<span class="units">°C</span>';
 
     if (data.weather[0].icon == "01d") {
       weatherIcon.src = "images/type=01d.svg";
@@ -57,9 +57,26 @@ document.querySelector("#feels-like").innerHTML = Math.round(data.main.feels_lik
       weatherIcon.src = "images/type=13d.svg";
     }else if (data.weather[0].icon == "50d") {
       weatherIcon.src = "images/type=50d.svg";
-    }
+    }else if(data.weather[0].icon == "01n") {
+      weatherIcon.src = "images/type=01n.svg";
+  }else if (data.weather[0].icon == "02n") {
+    weatherIcon.src = "images/type=02n.svg";
+  } else if (data.weather[0].icon == "03n") {
+    weatherIcon.src = "images/type=03n.svg";
+  } else if (data.weather[0].icon == "04n") {
+    weatherIcon.src = "images/type=04n.svg";
+  } else if (data.weather[0].icon == "09n") {
+    weatherIcon.src = "images/type=09n.svg";
+    }else if (data.weather[0].icon == "10n") {
+    weatherIcon.src = "images/type=10n.svg"}
+  else if (data.weather[0].icon == "11n") {
+    weatherIcon.src = "images/type=11n.svg"}
+  else if (data.weather[0].icon == "13n") {
+    weatherIcon.src = "images/type=13n.svg"}
+  else if (data.weather[0].icon == "50n") {
+    weatherIcon.src = "images/type=50n.svg"}
   }
-};
+}
 
 async function checkWeatherByCoords(lat, lon) {
     const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`)
@@ -69,49 +86,68 @@ async function checkWeatherByCoords(lat, lon) {
         document.querySelector(".Weather").style.display = "none";
       } else {
         var data = await response.json();
-        console.log(data);
+    console.log(data);
+
+    document.querySelector(".search").placeholder = data.name;
+    const weatherDescription = data.weather[0].description;
+    document.querySelector(".weather-description").innerHTML = weatherDescription.charAt(0).toUpperCase() + weatherDescription.slice(1);
+    document.querySelector(".location").innerHTML = data.name + ", " + data.sys.country;
     
-        document.querySelector(".search").placeholder = data.name;
-        document.querySelector(".weather-description").innerHTMLy = data.weather[0].description;
-        document.querySelector(".location").innerHTML = data.name + ", " + data.sys.country;
-        
-        const today = new Date();
-        const day = String(today.getDate()).padStart(2, '0');
-        const month = String(today.getMonth() + 1).padStart(2, '0');
-        const year = today.getFullYear();
-        const formattedDate = `${day}.${month}.${year}`;
-        document.querySelector(".date").innerHTML = formattedDate;
+    const today = new Date();
+    const day = String(today.getDate()).padStart(2, '0');
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const year = today.getFullYear();
+    const formattedDate = `${day}.${month}.${year}`;
+    document.querySelector(".date").innerHTML = formattedDate;
 
-    document.querySelector(".temperature").innerHTML =
-      Math.round(data.main.temp) + "°C";
-      document.querySelector("#sunset").innerHTML = convertUnixToAMPM(data.sys.sunset);
+document.querySelector(".temperature").innerHTML =
+Math.round(data.main.temp) + "°C";
+document.querySelector("#sunset").innerHTML = convertUnixToAMPM(data.sys.sunset);
 document.querySelector("#first-metric-sunrise-sunset").innerHTML = convertUnixToAMPM(data.sys.sunrise);
-    document.querySelector("#visibility").innerHTML = (data.main.pressure /1000).toFixed(1) + "km";
-    document.querySelector("#pressure").innerHTML = data.main.pressure + "hPa";
-    document.querySelector("#humidity").innerHTML = data.main.humidity + "%";
-    document.querySelector("#feels-like").innerHTML = Math.round(data.main.feels_like) + "°C";
+document.querySelector("#visibility").innerHTML = (data.main.pressure /1000).toFixed(2) + '<span class="units">km</span>';
+document.querySelector("#pressure").innerHTML = data.main.pressure + '<span class="units">hPa</span>';
+document.querySelector("#humidity").innerHTML = data.main.humidity + '<span class="units">%</span>';
+document.querySelector("#feels-like").innerHTML = Math.round(data.main.feels_like) + '<span class="units">°C</span>';
 
-        if (data.weather[0].icon == "01d") {
-          weatherIcon.src = "images/type=01d.svg";
-        } else if (data.weather[0].icon == "02d") {
-          weatherIcon.src = "images/type=02d.png";
-        } else if (data.weather[0].icon == "03d") {
-          weatherIcon.src = "images/type=03d.svg";
-        } else if (data.weather[0].icon == "04d") {
-          weatherIcon.src = "images/type=04d.svg";
-        } else if (data.weather[0].icon == "09d") {
-          weatherIcon.src = "images/type=09d.svg";
-        }else if (data.weather[0].icon == "10d") {
-          weatherIcon.src = "images/type=10d.svg";
-        }else if (data.weather[0].icon == "11d") {
-          weatherIcon.src = "images/type=11d.svg";
-        }else if (data.weather[0].icon == "13d") {
-          weatherIcon.src = "images/type=13d.svg";
-        }else if (data.weather[0].icon == "50d") {
-          weatherIcon.src = "images/type=50d.svg";
-        }
-      }
+    if (data.weather[0].icon == "01d") {
+      weatherIcon.src = "images/type=01d.svg";
+    } else if (data.weather[0].icon == "02d") {
+      weatherIcon.src = "images/type=02d.png";
+    } else if (data.weather[0].icon == "03d") {
+      weatherIcon.src = "images/type=03d.svg";
+    } else if (data.weather[0].icon == "04d") {
+      weatherIcon.src = "images/type=04d.svg";
+    } else if (data.weather[0].icon == "09d") {
+      weatherIcon.src = "images/type=09d.svg";
+    }else if (data.weather[0].icon == "10d") {
+      weatherIcon.src = "images/type=10d.svg";
+    }else if (data.weather[0].icon == "11d") {
+      weatherIcon.src = "images/type=11d.svg";
+    }else if (data.weather[0].icon == "13d") {
+      weatherIcon.src = "images/type=13d.svg";
+    }else if (data.weather[0].icon == "50d") {
+      weatherIcon.src = "images/type=50d.svg";
+    }else if(data.weather[0].icon == "01n") {
+      weatherIcon.src = "images/type=01n.svg";
+  }else if (data.weather[0].icon == "02n") {
+    weatherIcon.src = "images/type=02n.svg";
+  } else if (data.weather[0].icon == "03n") {
+    weatherIcon.src = "images/type=03n.svg";
+  } else if (data.weather[0].icon == "04n") {
+    weatherIcon.src = "images/type=04n.svg";
+  } else if (data.weather[0].icon == "09n") {
+    weatherIcon.src = "images/type=09n.svg";
+    }else if (data.weather[0].icon == "10n") {
+    weatherIcon.src = "images/type=10n.svg"}
+  else if (data.weather[0].icon == "11n") {
+    weatherIcon.src = "images/type=11n.svg"}
+  else if (data.weather[0].icon == "13n") {
+    weatherIcon.src = "images/type=13n.svg"}
+  else if (data.weather[0].icon == "50n") {
+    weatherIcon.src = "images/type=50n.svg"}
+  }
 
+      await checkAirQuality(lat, lon);
 };
 
 
@@ -122,6 +158,16 @@ searchBtn.addEventListener("click", async() => {
   const lat = await checkCordslat(city); 
   const lon = await checkCordslon(city);
   await checkAirQuality(lat, lon);
+});
+
+searchBox.addEventListener("keydown", async (event) => {
+  if (event.key === "Enter") {
+    const city = searchBox.value;
+    await checkWeather(city); 
+    const lat = await checkCordslat(city);
+    const lon = await checkCordslon(city);
+    await checkAirQuality(lat, lon);
+  }
 });
 
 searchLocation.addEventListener("click", () => {
@@ -171,8 +217,6 @@ searchLocation.addEventListener("click", () => {
             console.error("Keine Koordinaten gefunden");
         } else {
             var lat = data[0].lat;
-            console.log(data);
-            console.log(lat);
             return lat;
         }
     }
@@ -190,7 +234,6 @@ searchLocation.addEventListener("click", () => {
             console.error("Keine Koordinaten gefunden");
         } else {
             var lon = data[0].lon;
-            console.log(lon);
             return lon;
         }
     }
@@ -201,12 +244,7 @@ searchLocation.addEventListener("click", () => {
             if (response.status == 404) {
                 console.error("Luftqualität nicht gefunden");
             } else {
-                console.error("Ein Fehler ist aufgetreten: " + response.status);
-            
-  
-
         const data = await response.json();
-        console.log(data);
 
         document.querySelector("#pm2_5").innerHTML = data.list[0].components.pm2_5.toFixed(1);
         document.querySelector("#so2").innerHTML = data.list[0].components.so2.toFixed(1);

@@ -128,7 +128,6 @@ section {
     grid-area: section;
     background-color: #100E17;
 }
-
 .time {
     font-size: 20px;
 }
@@ -167,12 +166,12 @@ section {
     display: flex;
     align-items: center;
     margin-left: 9px; 
+    color: #B9B6BF;
 }
 
 .date-container img {
     margin-right: 7.2px; 
 }
-
 .weather-description {
     font-size: 13.5px; 
     margin-left: 9px; 
@@ -184,7 +183,13 @@ hr {
     background: #3E3D40;
     margin-left: 9px;
 }
-
+.comming-soon {
+    grid-area: section;
+    background-color: #1D1C1F;
+    margin: 22.5px; 
+    padding: 22.5px; 
+    border-radius: 22.5px; 
+}
 main {
     grid-area: main;
     background-color: #100E17;
@@ -206,6 +211,7 @@ main {
     justify-content: flex-start;
     flex-wrap: wrap;
     flex-direction: row;
+    color: #B9B6BF;
 }
 
 .air-quality-content {
@@ -392,6 +398,16 @@ main {
     margin: 0px;
     margin-left: 70px;
 }
+
+
+.wind-container {
+    grid-area: main;
+    background-color: #1D1C1F;
+    margin: 22.5px; 
+    padding: 22.5px; 
+    border-radius: 22.5px; 
+}
+
 footer {
     grid-area: footer;
     background-color: #100E17;

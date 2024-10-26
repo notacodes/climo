@@ -11,6 +11,8 @@ html, body {
     font-family: Nunito, sans-serif;
     color: white;
     overflow-x: hidden;
+    width: 100vw;
+    height: 100vh;
 }
 
 ::-webkit-scrollbar {
@@ -29,16 +31,18 @@ html, body {
     margin: 0;
     width: 100vw;
     height: 100vh;
-    grid-template-columns: 25% 1fr 1fr;
+    grid-template-columns: 1fr;
     grid-template-rows: 100px 1fr auto;
     grid-template-areas: 
-    "header header header"
-    "section main main"
-    "footer footer footer";
+    "header header"
+    "section main"
+    "footer footer";
 }
+
 
 header {
     grid-area: header;
+    width: 100%;
     background-color: #100E17;
     display: flex;
     align-items: center;
@@ -46,6 +50,7 @@ header {
 }
 
 .searchbar {
+    width: 450px;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -108,12 +113,13 @@ input::-webkit-search-cancel-button {
     background-color: #B5A1E5;
     color: black;
     border: none;
-    margin: 22.5px; 
+    margin: 22.5px;
     cursor: pointer;
-    border-radius: 22.5px; 
+    border-radius: 22.5px;
     height: 45px; 
     width: 180px; 
-    font-size: 14.4px; 
+    font-size: 14.4px;
+    transition: width 0.3s ease, height 0.3s ease; 
 }
 
 .searchLocation:hover {
@@ -127,6 +133,7 @@ input::-webkit-search-cancel-button {
 section {
     grid-area: section;
     background-color: #100E17;
+    flex-basis: 270px;
 }
 .time {
     font-size: 20px;
@@ -138,6 +145,7 @@ section {
 
 .weather-card {
     grid-area: section;
+    min-width: 270px;
     background-color: #1D1C1F;
     margin: 22.5px; 
     padding: 22.5px; 
@@ -147,6 +155,7 @@ section {
 .date-container-weather {
     display: flex;
     align-items: center;
+    min-width: 270px;
 }
 
 .date-container-weather h2 {
@@ -199,7 +208,7 @@ main {
 }
 .detailed-information {
     grid-area: main;
-    width: 100%;
+    width: auto;
     background-color: #1D1C1F;
     margin: 22.5px; 
     padding: 22.5px; 
@@ -207,16 +216,24 @@ main {
 }
 
 .detailed-information-cards {
+    color: #B9B6BF;
+}
+.first-cards{
     display: flex;
     align-items: center;
     justify-content: flex-start;
     flex-wrap: wrap;
     flex-direction: row;
-    color: #B9B6BF;
 }
-
+.second-cards{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
 .air-quality-content {
-    width: auto; 
+    width: 450px; 
     background-color: #1A191C;
     margin: 11px; 
     padding: 22.5px; 
@@ -257,13 +274,16 @@ main {
     margin: 9px; 
     margin-top: 0px;
 }
+.value-for-mobile{
+    display: none;
+}
 
 .air-quality-values p {
     margin: 9px; 
 }
 
 .sunrise-sunset-content {
-    width: auto;      
+    width: 450px;      
     background-color: #1A191C;
     margin: 11px; 
     padding: 22.5px; 
@@ -418,5 +438,77 @@ footer p {
     color: #7B7980;
     margin: 9px; 
 }
+
+@media (max-width: 800px) {
+    .searchLocation {
+        width: 50px;
+        height: 50px;
+        padding: 15px;
+        border-radius: 50%;
+        display: block;
+    }
+    .searchLocation p { 
+        display: none;
+    }
+    
+    .searchLocation img {
+        margin: 0; 
+    }
+    #header-logo {
+        width: 150px;
+    }
+
+}
+ @media (max-width: 980px) {
+ .grid-container {  
+    grid-template-columns: 100%;
+    grid-template-rows: 100px auto auto auto;
+    grid-template-areas: 
+    "header"
+    "section"
+    "main"
+    "footer";
+}}
+@media (max-width: 590px) {                                 
+    .air-quality-content {
+        width: 100%;
+    }
+    .air-quality-metrics{
+        flex-wrap: wrap;
+        margin: 0px;
+    }
+    .air-quality-values{
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-left:0 !important;
+    }
+    .air-quality-metrics{
+        display: none;
+    }
+    .value-for-mobile{
+        display: block;
+        color: #7B7980;
+        font-size: 20px;
+        margin: 0 !important;
+    }
+    .sunrise-sunset-content {
+        width: 100%;
+    }
+   
+    .humidity-content {
+        width: 100%;
+    }
+    .pressure-content {
+        width: 100%;
+    }
+    .visibility-content {
+        width: 100%;
+    }
+    .feels-like-content {
+        width: 100%;
+    }
+    
+   }
+  
 
 

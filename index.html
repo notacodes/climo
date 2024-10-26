@@ -11,7 +11,7 @@
 <body>
     <div class="grid-container">
         <header>
-            <img src="/images/Climo-Logo.png" alt="Logo">
+            <img src="/images/Climo-Logo.png" alt="Logo" id="header-logo">
             <div class="searchbar">
                 <button><img src="images/search.svg"/></button>
                 <input class="search" placeholder="Search City" spellcheck="false"></Input>
@@ -46,7 +46,7 @@
             <div class="detailed-information">
                 <h2>Todays Highlights</h2>
                 <div class="detailed-information-cards">
-                 
+                 <div class="first-cards">
                     <div class="air-quality-content">
                         <div class="air-quality-header">                   
                             <h4>Air Quality Index</h4>
@@ -60,10 +60,10 @@
                         </div>
                         <div class="air-quality-values">
                         <img src="images/air.svg" alt="Icon">
-                            <p class="p-value" id="pm2_5">12.5</p>
-                            <p class="p-value" id="so2">0.5</p>
-                            <p class="p-value" id="no2">0.5</p>
-                            <p class="p-value" id="o3">75.5</p>
+                            <p class="p-value" id="pm2_5">12.5</p><p class="value-for-mobile">PM2.5</p>
+                            <p class="p-value" id="so2">0.5</p><p class="value-for-mobile">SO2</p>
+                            <p class="p-value" id="no2">0.5</p><p class="value-for-mobile">NO2</p>
+                            <p class="p-value" id="o3">75.5</p><p class="value-for-mobile">O3</p>
                         </div>
                     </div>
                 
@@ -82,6 +82,8 @@
                             <p id="sunset"class="p-value">5:54PM</p>
                         </div>
                     </div>
+                    </div>
+                    <div class="second-cards">
                 <div class="humidity">
                         <div class="humidity-content">
                             <div class="humidity-header">                   
@@ -126,6 +128,7 @@
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
             </div>
         </main>

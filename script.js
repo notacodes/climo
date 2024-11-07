@@ -266,15 +266,12 @@ searchLocation.addEventListener("click", () => {
         
     }}
 
-    document.addEventListener('touchstart', function(event) {
-      const startY = event.touches[0].clientY;
+    document.addEventListener('touchmove', function(event) {
       let scrollableElement = event.target;
   
-      // Finde den ersten scrollbaren übergeordneten Container
+      // Finde den ersten übergeordneten scrollbaren Container
       while (scrollableElement !== document.body) {
-          const style = window.getComputedStyle(scrollableElement);
-          const overflowY = style.getPropertyValue('overflow-y');
-  
+          const overflowY = window.getComputedStyle(scrollableElement).overflowY;
           if (overflowY === 'auto' || overflowY === 'scroll') {
               break;
           }
@@ -285,23 +282,13 @@ searchLocation.addEventListener("click", () => {
       const scrollHeight = scrollableElement.scrollHeight;
       const clientHeight = scrollableElement.clientHeight;
   
-      // Funktionen, um Bouncing am oberen und unteren Rand zu verhindern
-      function handleTouchMove(event) {
-          const currentY = event.touches[0].clientY;
-          const isScrollingUp = currentY > startY;
-          const isScrollingDown = currentY < startY;
-  
-          if ((isScrollingUp && scrollTop === 0) || (isScrollingDown && scrollTop + clientHeight >= scrollHeight)) {
-              // Wenn am oberen oder unteren Rand, verhindere Standardbewegung (Bouncing)
-              event.preventDefault();
-          }
+      // Erkenne, ob ein Bounce-Effekt am oberen oder unteren Rand auftreten würde
+      if (scrollTop <= 0 || scrollTop + clientHeight >= scrollHeight) {
+          // Ändere den Hintergrund auf Schwarz
+          document.body.style.backgroundColor = 'black';
+      } else {
+          // Setze den Hintergrund auf die Standardfarbe zurück, wenn nicht am Rand
+          document.body.style.backgroundColor = '';
       }
-  
-      scrollableElement.addEventListener('touchmove', handleTouchMove, { passive: false });
-  
-      scrollableElement.addEventListener('touchend', function cleanup() {
-          scrollableElement.removeEventListener('touchmove', handleTouchMove);
-          scrollableElement.removeEventListener('touchend', cleanup);
-      });
-  }, { passive: false });
+  });
   

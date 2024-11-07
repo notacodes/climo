@@ -265,3 +265,43 @@ searchLocation.addEventListener("click", () => {
         }
         
     }}
+
+    document.addEventListener('touchstart', function(event) {
+      const startY = event.touches[0].clientY;
+      let scrollableElement = event.target;
+  
+      // Finde den ersten scrollbaren übergeordneten Container
+      while (scrollableElement !== document.body) {
+          const style = window.getComputedStyle(scrollableElement);
+          const overflowY = style.getPropertyValue('overflow-y');
+  
+          if (overflowY === 'auto' || overflowY === 'scroll') {
+              break;
+          }
+          scrollableElement = scrollableElement.parentElement || document.body;
+      }
+  
+      const scrollTop = scrollableElement.scrollTop;
+      const scrollHeight = scrollableElement.scrollHeight;
+      const clientHeight = scrollableElement.clientHeight;
+  
+      // Funktionen, um Bouncing am oberen und unteren Rand zu verhindern
+      function handleTouchMove(event) {
+          const currentY = event.touches[0].clientY;
+          const isScrollingUp = currentY > startY;
+          const isScrollingDown = currentY < startY;
+  
+          if ((isScrollingUp && scrollTop === 0) || (isScrollingDown && scrollTop + clientHeight >= scrollHeight)) {
+              // Wenn am oberen oder unteren Rand, verhindere Standardbewegung (Bouncing)
+              event.preventDefault();
+          }
+      }
+  
+      scrollableElement.addEventListener('touchmove', handleTouchMove, { passive: false });
+  
+      scrollableElement.addEventListener('touchend', function cleanup() {
+          scrollableElement.removeEventListener('touchmove', handleTouchMove);
+          scrollableElement.removeEventListener('touchend', cleanup);
+      });
+  }, { passive: false });
+  

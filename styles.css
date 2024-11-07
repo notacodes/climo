@@ -60,6 +60,9 @@ header img {
     margin: 22.5px; 
     margin-left: 45px; 
 }
+#header-logo-small {
+    display: none;
+}
 
 .searchbar {
     width: 450px; 
@@ -506,6 +509,20 @@ footer p {
     }
     .feels-like-content {
         width: 100%;
+    }
+    #header-logo-small {
+        display: block;
+        margin: 15px;
+        width: 90px;
+    }
+    #header-logo {
+        display: none;
+    }
+    .searchLocation{
+        margin: 15px;
+    }
+    .searchbar {
+        margin: 15px;
     }
     
    }

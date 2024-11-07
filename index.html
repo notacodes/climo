@@ -1,22 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Climo is a simple and clean weather dashboard that allows you to easily track all weather data in real-time from around the world.">
+    <meta name="description"
+        content="Climo is a simple and clean weather dashboard that allows you to easily track all weather data in real-time from around the world.">
     <title>Climo - Weather Dashboard</title>
     <link rel="icon" type="image/x-icon" href="/images/Kopie_von_Design_ohne_Titel-removebg-preview.png">
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <div class="grid-container">
         <header>
             <img src="/images/Climo-Logo.png" alt="Logo" id="header-logo">
+            <img src="/images/logo_small.png" alt="Logo" id="header-logo-small">
             <div class="searchbar">
-                <button><img src="images/search.svg"/></button>
+                <button><img src="images/search.svg" /></button>
                 <input class="search" placeholder="Search City" spellcheck="false"></Input>
             </div>
-            <button class="searchLocation"><img src="/images/my_location.svg" alt="Icon"><p>Current Location</p></button>
+            <button class="searchLocation"><img src="/images/my_location.svg" alt="Icon">
+                <p>Current Location</p>
+            </button>
         </header>
         <section>
             <div class="weather-card">
@@ -33,8 +39,8 @@
                         <p class="date">04.10.2024</p>
                     </div>
                     <div class="date-container">
-                    <img src="/images/location_on(1).svg" alt="Icon">
-                    <p class="location"> London</p>
+                        <img src="/images/location_on(1).svg" alt="Icon">
+                        <p class="location"> London</p>
                     </div>
                 </div>
             </div>
@@ -46,94 +52,101 @@
             <div class="detailed-information">
                 <h2>Todays Highlights</h2>
                 <div class="detailed-information-cards">
-                 <div class="first-cards">
-                    <div class="air-quality-content">
-                        <div class="air-quality-header">                   
-                            <h4>Air Quality Index</h4>
-                            <img id="air-quality-image" src="images/air-quality-index=1.svg" alt="Icon">
+                    <div class="first-cards">
+                        <div class="air-quality-content">
+                            <div class="air-quality-header">
+                                <h4>Air Quality Index</h4>
+                                <img id="air-quality-image" src="images/air-quality-index=1.svg" alt="Icon">
+                            </div>
+                            <div class="air-quality-metrics">
+                                <p id="first-metric-air-quality">PM2.5</p>
+                                <p>SO2</p>
+                                <p>NO2</p>
+                                <p>O3</p>
+                            </div>
+                            <div class="air-quality-values">
+                                <img src="images/air.svg" alt="Icon">
+                                <p class="p-value" id="pm2_5">12.5</p>
+                                <p class="value-for-mobile">PM2.5</p>
+                                <p class="p-value" id="so2">0.5</p>
+                                <p class="value-for-mobile">SO2</p>
+                                <p class="p-value" id="no2">0.5</p>
+                                <p class="value-for-mobile">NO2</p>
+                                <p class="p-value" id="o3">75.5</p>
+                                <p class="value-for-mobile">O3</p>
+                            </div>
                         </div>
-                        <div class="air-quality-metrics">
-                            <p id="first-metric-air-quality">PM2.5</p>
-                            <p>SO2</p>
-                            <p>NO2</p>
-                            <p>O3</p>
+
+                        <div class="sunrise-sunset-content">
+                            <div class="sunrise-sunset-header">
+                                <h4>Sunrise & Sunset</h4>
+                            </div>
+                            <div class="sunrise-sunset-metrics">
+                                <p>Sunrise</p>
+                                <p>Sunset</p>
+                            </div>
+                            <div class="sunrise-sunset-values">
+                                <img src="images/clear_day.svg" alt="Icon">
+                                <p id="first-metric-sunrise-sunset" class="p-value">6:30AM</p>
+                                <img src="images/clear_night.svg" alt="Icon">
+                                <p id="sunset" class="p-value">5:54PM</p>
+                            </div>
                         </div>
-                        <div class="air-quality-values">
-                        <img src="images/air.svg" alt="Icon">
-                            <p class="p-value" id="pm2_5">12.5</p><p class="value-for-mobile">PM2.5</p>
-                            <p class="p-value" id="so2">0.5</p><p class="value-for-mobile">SO2</p>
-                            <p class="p-value" id="no2">0.5</p><p class="value-for-mobile">NO2</p>
-                            <p class="p-value" id="o3">75.5</p><p class="value-for-mobile">O3</p>
-                        </div>
-                    </div>
-                
-                    <div class="sunrise-sunset-content">
-                        <div class="sunrise-sunset-header">                   
-                            <h4>Sunrise & Sunset</h4>
-                        </div>
-                        <div class="sunrise-sunset-metrics">
-                            <p>Sunrise</p>
-                            <p>Sunset</p>
-                        </div>
-                        <div class="sunrise-sunset-values">
-                        <img src="images/clear_day.svg" alt="Icon">
-                            <p id="first-metric-sunrise-sunset"class="p-value">6:30AM</p>
-                            <img src="images/clear_night.svg" alt="Icon">
-                            <p id="sunset"class="p-value">5:54PM</p>
-                        </div>
-                    </div>
                     </div>
                     <div class="second-cards">
-                <div class="humidity">
-                        <div class="humidity-content">
-                            <div class="humidity-header">                   
-                                <h4>Humidity</h4>
+                        <div class="humidity">
+                            <div class="humidity-content">
+                                <div class="humidity-header">
+                                    <h4>Humidity</h4>
+                                </div>
+                                <div class="humidity-values">
+                                    <img src="images/humidity_percentage.svg" alt="Icon">
+                                    <p class="p-value" id="humidity">35<span class="units">%</span></p>
+                                </div>
                             </div>
-                            <div class="humidity-values">
-                            <img src="images/humidity_percentage.svg" alt="Icon">
-                            <p class="p-value" id="humidity">35<span class="units">%</span></p>
+                        </div>
+                        <div class="pressure">
+                            <div class="pressure-content">
+                                <div class="pressure-header">
+                                    <h4>Pressure</h4>
+                                </div>
+                                <div class="pressure-values">
+                                    <img src="images/airwave.svg" alt="Icon">
+                                    <p class="p-value" id="pressure">1013<span class="units">hPa</span></p>
+                                </div>
                             </div>
                         </div>
-                </div>
-                <div class="pressure">
-                    <div class="pressure-content">
-                        <div class="pressure-header">                   
-                            <h4>Pressure</h4>
+                        <div class="visibility">
+                            <div class="visibility-content">
+                                <div class="visibility-header">
+                                    <h4>Visibility</h4>
+                                </div>
+                                <div class="visibility-values">
+                                    <img src="images/visibility.svg" alt="Icon">
+                                    <p class="p-value" id="visibility">10<span class="units">km</span></p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="pressure-values">
-                        <img src="images/airwave.svg" alt="Icon">
-                        <p class="p-value" id="pressure">1013<span class="units">hPa</span></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="visibility">
-                    <div class="visibility-content">
-                        <div class="visibility-header">                   
-                            <h4>Visibility</h4>
-                        </div>
-                        <div class="visibility-values">
-                        <img src="images/visibility.svg" alt="Icon">
-                        <p class="p-value" id="visibility">10<span class="units">km</span></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="feels-like">
-                    <div class="feels-like-content">
-                        <div class="feels-like-header">                   
-                            <h4>Feels Like</h4>
-                        </div>
-                        <div class="feels-like-values">
-                        <img src="images/thermostat.svg" alt="Icon">
-                        <p class="p-value" id="feels-like">10<span class="units">°C</span></p>
+                        <div class="feels-like">
+                            <div class="feels-like-content">
+                                <div class="feels-like-header">
+                                    <h4>Feels Like</h4>
+                                </div>
+                                <div class="feels-like-values">
+                                    <img src="images/thermostat.svg" alt="Icon">
+                                    <p class="p-value" id="feels-like">10<span class="units">°C</span></p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            </div>
             </div>
         </main>
-        <footer><p>Made with ♥ by Nota</p></footer>
+        <footer>
+            <p>Made with ♥ by Nota</p>
+        </footer>
     </div>
     <script src="script.js"></script>
 </body>
+
 </html>

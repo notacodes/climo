@@ -265,30 +265,4 @@ searchLocation.addEventListener("click", () => {
         }
         
     }}
-
-    document.addEventListener('touchmove', function(event) {
-      let scrollableElement = event.target;
-  
-      // Finde den ersten übergeordneten scrollbaren Container
-      while (scrollableElement !== document.body) {
-          const overflowY = window.getComputedStyle(scrollableElement).overflowY;
-          if (overflowY === 'auto' || overflowY === 'scroll') {
-              break;
-          }
-          scrollableElement = scrollableElement.parentElement || document.body;
-      }
-  
-      const scrollTop = scrollableElement.scrollTop;
-      const scrollHeight = scrollableElement.scrollHeight;
-      const clientHeight = scrollableElement.clientHeight;
-  
-      // Erkenne, ob ein Bounce-Effekt am oberen oder unteren Rand auftreten würde
-      if (scrollTop <= 0 || scrollTop + clientHeight >= scrollHeight) {
-          // Ändere den Hintergrund auf Schwarz
-          document.body.style.backgroundColor = 'black';
-      } else {
-          // Setze den Hintergrund auf die Standardfarbe zurück, wenn nicht am Rand
-          document.body.style.backgroundColor = '';
-      }
-  });
   

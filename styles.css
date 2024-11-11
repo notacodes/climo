@@ -12,7 +12,6 @@ html, body {
     color: white;
     overflow-x: hidden;
     width: 100vw;
-    height: 100vh;
 }
 
 ::-webkit-scrollbar {
@@ -59,6 +58,9 @@ header {
 header img {
     margin: 22.5px; 
     margin-left: 45px; 
+}
+#header-logo-small {
+    display: none;
 }
 
 .searchbar {
@@ -495,7 +497,25 @@ footer p {
         justify-content: center;
         margin-left:0 !important;
     }
-   }
+    #header-logo-small {
+        display: block;
+        margin: 15px;
+        width: 90px;
+    }
+    #header-logo {
+        display: none;
+    }
+    .searchLocation{
+        margin: 15px;
+    }
+    .searchbar {
+        margin: 15px;
+    }
+   .searchbar input {
+    font-size: 16px;
+ }
+}
+
    @media (max-width: 377px) { 
     .sunrise-sunset-values img{
         width: 40px;
@@ -504,6 +524,8 @@ footer p {
     .sunrise-sunset-values p{
         font-size: 20px;
     }
+    
    }
+  
 
 

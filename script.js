@@ -265,3 +265,8 @@ searchLocation.addEventListener("click", () => {
         }
         
     }}
+    document.querySelector(".search").addEventListener("keydown", function(event) {
+      if (event.key === "Enter") {
+          event.preventDefault();
+          this.blur();
+      }});

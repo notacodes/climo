@@ -520,12 +520,17 @@ footer p {
     .sunrise-sunset-values img{
         width: 40px;
         height: 40px;
+        margin-right: 5px;
     }
     .sunrise-sunset-values p{
         font-size: 20px;
     }
-    
    }
+   @media (min-width: 364px) and (max-width: 378px) {
+    #first-metric-sunrise-sunset {
+      margin-right: 20px;
+    }
+  }
   
 
 

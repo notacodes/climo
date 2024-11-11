@@ -349,6 +349,7 @@ main {
 }
 .pressure-content {
     width: 211px; 
+    max-width: 280px;
     background-color: #1A191C;
     margin: 11px; 
     padding: 22.5px; 
@@ -419,8 +420,6 @@ main {
     margin: 0px;
     margin-left: 70px;
 }
-
-
 .wind-container {
     grid-area: main;
     background-color: #1D1C1F;
@@ -491,24 +490,20 @@ footer p {
         font-size: 20px;
         margin: 0 !important;
     }
-    .sunrise-sunset-content {
-        width: 100%;
+    .sunrise-sunset-values{
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-left:0 !important;
     }
-   
-    .humidity-content {
-        width: 100%;
-    }
-    .pressure-content {
-        width: 100%;
-    }
-    .visibility-content {
-        width: 100%;
-    }
-    .feels-like-content {
-        width: 100%;
-    }
-    
    }
-  
+   @media (max-width: 377px) { 
+    .sunrise-sunset-values img{
+        width: 40px;
+        height: 40px;
+    }
+    .sunrise-sunset-values p{
+        font-size: 20px;
+    }
+   }
 
 

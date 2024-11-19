@@ -195,13 +195,6 @@ hr {
     background: #3E3D40;
     margin-left: 9px;
 }
-.comming-soon {
-    grid-area: section;
-    background-color: #1D1C1F;
-    margin: 22.5px; 
-    padding: 22.5px; 
-    border-radius: 22.5px; 
-}
 main {
     grid-area: main;
     background-color: #100E17;
@@ -292,7 +285,6 @@ main {
     padding: 22.5px; 
     border-radius: 22.5px; 
 }
-
 .sunrise-sunset-content img {
     margin: 9px; 
 }
@@ -521,17 +513,15 @@ footer p a {
    .searchbar input {
     font-size: 16px;
  }
+.sunrise-sunset-metrics{
+    display: none;
 }
 @media (max-width: 405px) { 
     .searchbar img{
         margin: 0px;
     }
-    .searchbar input{
-        
-    }
 }
-
-   @media (max-width: 377px) { 
+ @media (max-width: 377px) { 
     .sunrise-sunset-values img{
         width: 40px;
         height: 40px;

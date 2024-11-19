@@ -526,6 +526,9 @@ footer p a {
     .searchbar img{
         margin: 0px;
     }
+    .searchbar input{
+        
+    }
 }
 
    @media (max-width: 377px) { 

@@ -10,8 +10,8 @@ html, body {
     padding: 0;
     font-family: Nunito, sans-serif;
     color: white;
-    background-color: black;
-    overflow-x: hidden;
+    background-color: #100E17;
+    overscroll-behavior: none;
     width: 100vw;
 }
 

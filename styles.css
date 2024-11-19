@@ -526,6 +526,9 @@ footer p a {
     .searchbar input{
         font-size: 12px;
     }
+    .searchbar img{
+        margin: 0px;
+    }
     
 }
 

@@ -439,7 +439,13 @@ footer p {
     text-align: center;
     color: #7B7980;
     margin: 9px; 
+
 }
+footer p a {
+    color: #7B7980;
+    text-decoration: none;
+}
+
 
 @media (max-width: 800px) {
     .searchLocation {
@@ -515,6 +521,12 @@ footer p {
    .searchbar input {
     font-size: 16px;
  }
+}
+@media (max-width: 405px) { 
+    .searchbar input{
+        font-size: 12px;
+    }
+    
 }
 
    @media (max-width: 377px) { 

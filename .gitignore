@@ -1,3 +1,5 @@
+# Umgebungsvariablen
 .env
 .env.local
+.env.*
 .env.*.local

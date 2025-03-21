@@ -86,7 +86,7 @@ header img {
 
 input::-webkit-search-cancel-button {
     -webkit-appearance: none;
-    content: URL(/images/close_icon.svg);
+    content: url(/images/close_icon.svg);
     cursor: pointer;
 }
 
@@ -469,73 +469,87 @@ footer p a {
     "main"
     "footer";
 }}
-@media (max-width: 590px) {                                 
+@media (max-width: 590px) {
     .air-quality-content {
         width: 100%;
     }
-    .air-quality-metrics{
+
+    .air-quality-metrics {
         flex-wrap: wrap;
         margin: 0px;
     }
-    .air-quality-values{
+
+    .air-quality-values {
         flex-wrap: wrap;
         justify-content: center;
-        margin-left:0 !important;
+        margin-left: 0 !important;
     }
-    .air-quality-metrics{
+
+    .air-quality-metrics {
         display: none;
     }
-    .value-for-mobile{
+
+    .value-for-mobile {
         display: block;
         color: #7B7980;
         font-size: 20px;
         margin: 0 !important;
     }
-    .sunrise-sunset-values{
+
+    .sunrise-sunset-values {
         flex-wrap: wrap;
         justify-content: center;
-        margin-left:0 !important;
+        margin-left: 0 !important;
     }
+
     #header-logo-small {
         display: block;
         margin: 15px;
         width: 90px;
     }
+
     #header-logo {
         display: none;
     }
-    .searchLocation{
+
+    .searchLocation {
         margin: 15px;
     }
+
     .searchbar {
         margin: 15px;
     }
-   .searchbar input {
-    font-size: 16px;
- }
-.sunrise-sunset-metrics{
-    display: none;
-}
-@media (max-width: 405px) { 
-    .searchbar img{
-        margin: 0px;
+
+    .searchbar input {
+        font-size: 16px;
+    }
+
+    .sunrise-sunset-metrics {
+        display: none;
+    }
+
+    @media (max-width: 405px) {
+        .searchbar img {
+            margin: 0px;
+        }
+    }
+    @media (max-width: 377px) {
+        .sunrise-sunset-values img {
+            width: 40px;
+            height: 40px;
+            margin-right: 5px;
+        }
+
+        .sunrise-sunset-values p {
+            font-size: 20px;
+        }
+    }
+    @media (min-width: 364px) and (max-width: 378px) {
+        #first-metric-sunrise-sunset {
+            margin-right: 25px;
+        }
     }
 }
- @media (max-width: 377px) { 
-    .sunrise-sunset-values img{
-        width: 40px;
-        height: 40px;
-        margin-right: 5px;
-    }
-    .sunrise-sunset-values p{
-        font-size: 20px;
-    }
-   }
-   @media (min-width: 364px) and (max-width: 378px) {
-    #first-metric-sunrise-sunset {
-      margin-right: 25px;
-    }
-  }
   
 
 

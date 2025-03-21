@@ -1,4 +1,4 @@
-const apiKey = process.env.API_KEY;
+const apiKey = process.env.NEXT_PUBLIC_API_KEY;
 const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
 const airQualityApiUrl = "http://api.openweathermap.org/data/2.5/air_pollution";
 

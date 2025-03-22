@@ -1,4 +1,4 @@
-const apiKey = process.env.NEXT_PUBLIC_API_KEY;
+const apiKey ='8bd4fbc98ef565a9eb2b93540b25bf9e';
 const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
 const airQualityApiUrl = "http://api.openweathermap.org/data/2.5/air_pollution";
 
@@ -199,7 +199,7 @@ async function checkWeatherByCoords(lat, lon) {
     if (data.weather[0].icon == "01d") {
       weatherIcon.src = "images/type=01d.svg";
     } else if (data.weather[0].icon == "02d") {
-      weatherIcon.src = "images/type=02d.png";
+      weatherIcon.src = "images/type=02d.svg";
     } else if (data.weather[0].icon === "03d") {
       weatherIcon.src = "images/type=03d.svg";
     } else if (data.weather[0].icon === "04d") {
